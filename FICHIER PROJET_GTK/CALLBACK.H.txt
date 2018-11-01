@@ -1,0 +1,23 @@
+#ifndef CALLBACK_H_INCLUDED
+#define CALLBACK_H_INCLUDED
+void f_ad (GtkWidget *widget, gpointer info);
+void f_em (GtkWidget *widget, gpointer info);
+void connect_ad (GtkWidget *widget, gpointer info);
+void connect_em (GtkWidget *widget, gpointer info);
+void f_conge (GtkWidget *widget, gpointer info);
+void v_list (GtkWidget *widget, gpointer info);
+void v_list_h (GtkWidget *widget, gpointer info);
+void v_list_d (GtkWidget *widget, gpointer info);
+void Modif_em (GtkWidget *widget, gpointer info);
+void mod_em_h (GtkWidget *widget, gpointer info);
+void change_em_h (GtkWidget *widget, gpointer info);
+void sup_em (GtkWidget *widget, gpointer info);
+void succes (GtkWidget *widget, gpointer info);
+void ajout_em (GtkWidget *widget, gpointer info);
+void mod_d (GtkWidget *widget, gpointer info);
+void mod_em_d (GtkWidget *widget, gpointer info);
+void g_conge (GtkWidget *widget, gpointer info);
+void rep_conge (GtkWidget *widget, gpointer info);
+void mod_mtp (GtkWidget *widget, gpointer info);
+gint delete_event( GtkWidget *widget, GdkEvent *event, gpointer data );
+#endif // CALLBACK_H_INCLUDED

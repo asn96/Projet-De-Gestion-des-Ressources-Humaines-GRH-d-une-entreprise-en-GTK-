@@ -1,0 +1,63 @@
+#include <stdlib.h>
+#include <gtk/gtk.h>
+#include "C:\GTK\1ere page\callback.h"
+
+int main (int argc, char *argv[])
+{
+
+    //déclaration des variables
+  GtkWidget *fenetre = NULL;
+  GtkWidget *bt = NULL;
+  GtkWidget *bt1 = NULL;
+  GtkWidget *bt2 = NULL;
+  GtkWidget *bt3 = NULL;
+  GtkWidget *bte = NULL;
+  GtkWidget *bte1 = NULL;
+  GtkWidget *bte2 = NULL;
+  GtkWidget *img ;
+  GtkWidget *bte3 = NULL;
+
+
+  //initialiser gtk
+  gtk_init (&argc, &argv);
+
+  //initialisation des widget
+  fenetre = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  bte = gtk_vbox_new(FALSE, 0);
+  bte1 = gtk_hbox_new(TRUE, 0);
+  bte2 = gtk_hbox_new(TRUE, 0);
+  bt = gtk_label_new( "GESTION DES RESSOURCES HUMAINES \n\t\t D'UNE ENTREPRISE");
+  bt1 = gtk_button_new_with_label("ADMINISTRATEUR");
+  bt2 = gtk_button_new_with_label("EMPLOYER");
+  bt3 = gtk_button_new_with_label("DEMANDEUR");
+  img = gtk_image_new_from_file ("Images/im5.jpg");
+  bte3 = gtk_hbox_new(TRUE, 0);
+
+
+
+  //les conteneurs
+  gtk_container_add(GTK_CONTAINER(fenetre), bte);
+  gtk_box_pack_start(GTK_BOX(bte), bte1, TRUE, FALSE, 10);
+  gtk_box_pack_start(GTK_BOX(bte), bte2, TRUE, FALSE, 10);
+  gtk_box_pack_start(GTK_BOX(bte), bte3, TRUE, FALSE, 0);
+  gtk_box_pack_start(GTK_BOX(bte1), bt, TRUE, FALSE, 0);
+  gtk_box_pack_start(GTK_BOX(bte2), bt1, TRUE, TRUE, 0);
+  g_signal_connect(G_OBJECT(bt1), "clicked", G_CALLBACK(connect_ad), (gpointer)fenetre);
+
+  gtk_box_pack_start(GTK_BOX(bte2), bt2, TRUE, TRUE, 0);
+  g_signal_connect(G_OBJECT(bt2), "clicked", G_CALLBACK(connect_em), (gpointer)fenetre);
+
+  gtk_box_pack_start(GTK_BOX(bte2), bt3, TRUE, TRUE, 0);
+  g_signal_connect(G_OBJECT(bt3), "clicked", G_CALLBACK(ajout_em), (gpointer)fenetre);
+  gtk_box_pack_start(GTK_BOX(bte3), img, TRUE, FALSE, 0);
+
+  //position et dimension
+  gtk_window_set_position(GTK_WINDOW(fenetre), GTK_WIN_POS_CENTER);
+    gtk_window_set_default_size(GTK_WINDOW(fenetre), 300, 300);
+  gtk_window_set_title(GTK_WINDOW(fenetre), "Page d'acceuil");
+
+  /* Enter the main loop */
+  gtk_widget_show_all (fenetre);
+  gtk_main ();
+  return EXIT_SUCCESS;
+}

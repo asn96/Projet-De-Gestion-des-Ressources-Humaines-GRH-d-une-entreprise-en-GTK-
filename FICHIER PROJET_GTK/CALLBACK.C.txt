@@ -1,0 +1,1322 @@
+#include <stdlib.h>
+#include <gtk/gtk.h>
+
+    GtkWidget *tc1;
+    GtkWidget *tc2;
+static void helloWorld (GtkWidget *wid, GtkWidget *win)
+{
+  GtkWidget *dialog = NULL;
+
+  dialog = gtk_message_dialog_new (GTK_WINDOW (win), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Hello World!");
+  gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
+  gtk_dialog_run (GTK_DIALOG (dialog));
+  gtk_widget_destroy (dialog);
+}
+
+
+
+gint delete_event( GtkWidget *widget, GdkEvent *event, gpointer data )
+{
+gtk_main_quit ();
+return FALSE;
+}
+
+void succes (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *ok;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_vbox_new(TRUE, 0);
+    lac = gtk_label_new("SUCCES");
+    ok = gtk_button_new_with_label("OK");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec0);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec0), ok, TRUE, FALSE, 0);
+    g_signal_connect(G_OBJECT(ok), "clicked", G_CALLBACK(delete_event), (gpointer)fc);
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Suc");
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void v_list_h (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3, *bt;
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 5);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS VOULEZ VOIR LES EMPLOYES TRAVAILLANT");
+        bt_a1 = gtk_button_new_with_label("LA JOURNEE");
+        bt_a2 = gtk_button_new_with_label("LE SOIR");
+        bt_a3 = gtk_button_new_with_label("LA NUIT");
+        bt = gtk_button_new_with_label("Retour");
+        /*bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+       /* gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Liste_employes");
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+
+void change_em_h (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3, *bt;
+       /* GtkWidget *bt_a4;
+        GtkWidget *bt_a5;*/
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS VOULEZ L'INTEGREZ DANS L'HORAIRE DE");
+        bt_a1 = gtk_button_new_with_label("LA JOURNEE");
+        bt_a2 = gtk_button_new_with_label("LE SOIR");
+        bt_a3 = gtk_button_new_with_label("LA NUIT");
+        bt = gtk_button_new_with_label("Retour");
+        /*bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a1), "clicked", G_CALLBACK(succes), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a2), "clicked", G_CALLBACK(succes), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a3), "clicked", G_CALLBACK(succes), (gpointer)fad);
+       /* gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Horaire");
+        //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+void mod_em_h (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    //GtkWidget *btec2;
+    GtkWidget *btec3;
+    GtkWidget *lc1;
+   // GtkWidget *lc2;
+    GtkWidget *tc1;
+    //GtkWidget *tc2;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Vous voulez changer l'horaire d'un employe");
+    btec = gtk_vbox_new(TRUE, 9);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    //btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    //tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Entrer son matricule");
+    //lc2 = gtk_label_new("Mot_De_Passe");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, FALSE, 5);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 5);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   //gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 5);
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, TRUE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, TRUE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(change_em_h), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Horaire");
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void mod_d (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3, *bt;
+       /* GtkWidget *bt_a4;
+        GtkWidget *bt_a5;*/
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 5);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("CHOISIR UN DEPARTEMENT");
+        bt_a1 = gtk_button_new_with_label("DEPARTEMENT_1");
+        bt_a2 = gtk_button_new_with_label("DEPARTEMENT_2");
+        bt_a3 = gtk_button_new_with_label("DEPARTEMENT_3");
+        bt = gtk_button_new_with_label("Retour");
+        /*bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+        /*gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Departement");
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+void mod_em_d (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    //GtkWidget *btec2;
+    GtkWidget *btec3;
+    GtkWidget *lc1;
+   // GtkWidget *lc2;
+    GtkWidget *tc1;
+    //GtkWidget *tc2;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Vous voulez changer le departement d'un employe");
+    btec = gtk_vbox_new(TRUE, 9);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    //btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    //tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Entrer son matricule");
+    //lc2 = gtk_label_new("Mot_De_Passe");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   //gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, TRUE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, TRUE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(mod_d), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Mat_");
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void Modif_em (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2, *bt;
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS VOULEZ MODIFIER");
+        bt_a1 = gtk_button_new_with_label("SON DEPARTEMENT");
+        bt_a2 = gtk_button_new_with_label("SON HORAIRE");
+        bt = gtk_button_new_with_label("Retour");
+        //bt_a3 = gtk_button_new_with_label("LA NUIT");
+        /*bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 10);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+         g_signal_connect(G_OBJECT(bt_a1), "clicked", G_CALLBACK(mod_em_d), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a2), "clicked", G_CALLBACK(mod_em_h), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+        //gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, TRUE, 0);
+       /* gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Modification");
+        gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+
+void v_list_d (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3, *bt;
+       /* GtkWidget *bt_a4;
+        GtkWidget *bt_a5;*/
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("  VOUS VOULEZ VOIR LES EMPLOYES\n\tSUIVANT LEUR DEPARTEMENT");
+        bt_a1 = gtk_button_new_with_label("DEPARTEMENT_1");
+        bt_a2 = gtk_button_new_with_label("DEPARTEMENT_2");
+        bt_a3 = gtk_button_new_with_label("DEPARTEMENT_3");
+        bt = gtk_button_new_with_label("Retour");
+        /*bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+       /* gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Employe_Departement");
+       // gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+
+
+void v_list (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3, *bt;
+       /* GtkWidget *bt_a4;
+        GtkWidget *bt_a5;*/
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 5);
+        la = gtk_label_new("VOUS VOULEZ VOIR");
+        bt_a1 = gtk_button_new_with_label("LA LISTE GLOBALE");
+        bt_a2 = gtk_button_new_with_label("LISTE SUIVANT LES HORAIRES");
+        bt_a3 = gtk_button_new_with_label("LISTE SUIVANT LES DEPARTEMENTS");
+        bt = gtk_button_new_with_label("Retour");
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a2), "clicked", G_CALLBACK(v_list_h), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a3), "clicked", G_CALLBACK(v_list_d), (gpointer)fad);
+       gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Liste_Employes");
+        //gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+void sup_em (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec3;
+    GtkWidget *lc1;
+    GtkWidget *tc1;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Vous voulez supprimer un employe");
+    btec = gtk_vbox_new(TRUE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    //btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    //tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Entrer son matricule");
+    //lc2 = gtk_label_new("Mot_De_Passe");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   //gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, TRUE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, TRUE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(succes), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Mat_");
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+void ajout_em (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *btec5, *btec6;
+    GtkWidget *lc1, *lc3, *lc4, *lc5, *lc6, *lc7;
+    GtkWidget *lc2;
+    GtkWidget *tc1;
+    GtkWidget *tc2, *tc3, *tc4, *tc5;
+    GtkWidget *vc, *bt1, *bt2, *bt3, *bt4, *bt5, *bt6, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0, *btec7, *btec8, *btec9, *btec10, *btec11, *btec12, *btec13, *btec14;
+    GtkWidget *btradio, *btradio1;
+    GList *group, *group1;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    //sepa = gtk_hseparator_new ();
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(TRUE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    btec5 = gtk_hbox_new(TRUE, 0);
+//    regle = gtk_hruler_new();
+    btec6 = gtk_hbox_new(TRUE, 0);
+    btec7 = gtk_hbox_new(TRUE, 0);
+    //btec8 = gtk_hbox_new(TRUE, 0);
+    btec8 = gtk_vbox_new(TRUE, 0);
+    btec9 = gtk_vbox_new(TRUE, 0);
+    btec10 = gtk_vbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    tc3 = gtk_entry_new();
+    tc4 = gtk_entry_new();
+    tc5 = gtk_entry_new();
+    lc1 = gtk_label_new("Prenom");
+    lc2 = gtk_label_new("Nom");
+    lc3 = gtk_label_new("Date de Naissance");
+    lc4 = gtk_label_new("Matricule");
+    lc5 = gtk_label_new("Mot de passe");
+    lc6 = gtk_label_new("Choisir une horaire");
+    lc7 = gtk_label_new("Choisir un departement");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, FALSE, 0);
+
+
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec5, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec6, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec7, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec8, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec9, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec10, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+
+
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, FALSE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec4), lc3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec4), tc3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), lc4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), tc4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec6), lc5, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec6), tc5, TRUE, FALSE, 0);
+
+    gtk_box_pack_start(GTK_BOX(btec7), lc6, TRUE, FALSE, 0);
+
+    btradio = gtk_radio_button_new_with_label(NULL, "La journee");
+    gtk_box_pack_start (GTK_BOX (btec8), btradio, TRUE, FALSE, 0);
+    group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (btradio));
+    btradio = gtk_radio_button_new_with_label (group, "Le Soir");
+    //gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (btradio), TRUE);
+    gtk_box_pack_start (GTK_BOX (btec8), btradio, TRUE, FALSE, 0);
+    btradio = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (btradio), "La Nuit");
+    gtk_box_pack_start (GTK_BOX (btec8), btradio, TRUE, FALSE, 0);
+
+
+    gtk_box_pack_start(GTK_BOX(btec9), lc7, TRUE, FALSE, 0);
+     btradio1 = gtk_radio_button_new_with_label(NULL, "Departement_1");
+    gtk_box_pack_start (GTK_BOX (btec10), btradio1, TRUE, FALSE, 0);
+    group1 = gtk_radio_button_get_group (GTK_RADIO_BUTTON (btradio1));
+    btradio1 = gtk_radio_button_new_with_label (group1, "Departement_2");
+    //gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (btradio), TRUE);
+    gtk_box_pack_start (GTK_BOX (btec10), btradio1, TRUE, FALSE, 0);
+    btradio1 = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (btradio1), "Departement_3");
+    gtk_box_pack_start (GTK_BOX (btec10), btradio1, TRUE, FALSE, 0);
+
+
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    //g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Ajout_");
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void rep_conge (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *btec5;
+    GtkWidget *lc1, *lc3, *lc4;
+    GtkWidget *lc2;
+    GtkWidget *tc1;
+    GtkWidget *tc2, *tc3, *tc4;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(TRUE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    btec5 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    //tc2 = gtk_entry_new();
+    tc3 = gtk_entry_new();
+    tc4 = gtk_entry_new();
+    lc1 = gtk_label_new("Matricule");
+    //lc2 = gtk_label_new("debut du conge");
+    lc3 = gtk_label_new("Date_Demarrage");
+    lc4 = gtk_label_new("Date_du_retour");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   //gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec5, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, TRUE, 0);
+    //gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, TRUE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec4), lc3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec4), tc3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), lc4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), tc4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    //g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Info_");
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void g_conge (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2, *bt;
+       // GtkWidget *bt_a3;
+       /* GtkWidget *bt_a4;
+        GtkWidget *bt_a5;*/
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS VOULEZ");
+        bt_a1 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS DE CONGE");
+        bt_a2 = gtk_button_new_with_label("REPONDRE AUX DEMANDES");
+        bt = gtk_button_new_with_label("Retour");
+
+        //bt_a3 = gtk_button_new_with_label("LA NUIT");
+        /*bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");*/
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+       // gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 10);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        // g_signal_connect(G_OBJECT(bt_a1), "clicked", G_CALLBACK(mod_em_d), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a2), "clicked", G_CALLBACK(rep_conge), (gpointer)fad);
+        //gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, TRUE, 0);
+       /* gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, TRUE, 0);*/
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Items");
+      //  gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+
+}
+
+
+void f_ad (GtkWidget *widget, gpointer info)
+{
+//    gtk_init (&argc, &argv);
+
+    gchar *LOG="amad",*PASS="said";
+
+    gchar *login = gtk_entry_get_text(tc1);
+    gchar *passe = gtk_entry_get_text(tc2);
+    printf("%s\t %s", login, passe);
+
+    if(strcmp(login,LOG)==0 && strcmp(passe,PASS)==0)
+        {
+
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3;
+        GtkWidget *bt_a4;
+        GtkWidget *bt_a5, *bt_a6, *bt_a7, *img;
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(FALSE, 0);
+        bte_a1 = gtk_vbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS-VOUS CONNECTEZ EN TANT QUE ADMIN\n \t\t\tQUE VOULEZ-VOUS FAIRE");
+        bt_a1 = gtk_button_new_with_label("VOIR LA LISTE DES EMPLOYES");
+        bt_a2 = gtk_button_new_with_label("MODIFIER LES INFOS D'UN EMPLOYE");
+        bt_a3 = gtk_button_new_with_label("SUPPRIMER UN EMPLOYE");
+        bt_a4 = gtk_button_new_with_label("AJOUTER UN NOUVEAU EMPLOYE");
+        bt_a5 = gtk_button_new_with_label("VOIR LA LISTE DES DEMANDEURS D'EMPLOI");
+        bt_a6 = gtk_button_new_with_label("GESTION DES CONGES");
+        bt_a7 = gtk_button_new_with_label("Retour");
+        img = gtk_image_new_from_file("Images/im2.jpg");
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a1), "clicked", G_CALLBACK(v_list), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a2), "clicked", G_CALLBACK(Modif_em), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a3), "clicked", G_CALLBACK(sup_em), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a4), "clicked", G_CALLBACK(ajout_em), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a6, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a6), "clicked", G_CALLBACK(g_conge), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a7, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a7), "clicked", G_CALLBACK(delete_event), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a1), img, TRUE, FALSE, 0);
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Pade_d'accueil_Admin");
+         //position et dimension
+        //gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+        }else
+        {
+            GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *img;
+    GtkWidget *lc1;
+    GtkWidget *lc2;
+
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("!!! Identifiant ou Mot de passe incorrecte !!!");
+    btec = gtk_vbox_new(FALSE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    img = gtk_image_new_from_file("Images/im14.jpg");
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Identifiant");
+    lc2 = gtk_label_new("Mot_De_Passe");
+    vc = gtk_button_new_with_label("Valider");
+    bt = gtk_button_new_with_label("Retour");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE,FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 5);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, FALSE, 0);
+    gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(bt), "clicked", G_CALLBACK(delete_event), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec4), img, TRUE, FALSE, 0);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Connexion");
+     //position et dimension
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+        }
+
+
+}
+
+
+
+void f_conge (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *btec5;
+    GtkWidget *lc1, *lc3, *lc4;
+    GtkWidget *lc2;
+    GtkWidget *tc1;
+    GtkWidget *tc2, *tc3, *tc4;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(TRUE, 9);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    btec5 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    tc3 = gtk_entry_new();
+    tc4 = gtk_entry_new();
+    lc1 = gtk_label_new("Identifiant");
+    lc2 = gtk_label_new("Motif_Conge");
+    lc3 = gtk_label_new("Date_Demarrage");
+    lc4 = gtk_label_new("Date_du_retour");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, TRUE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec), btec0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, TRUE, 0);
+   // gtk_container_add(GTK_CONTAINER(btec0), lac);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec1);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec5, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+
+    //gtk_container_add(GTK_CONTAINER(btec), btec2);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_CONTAINER(btec), btec3);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, TRUE, 0);
+    //gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec4), lc3, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec4), tc3, TRUE, TRUE, 0);
+
+    gtk_box_pack_start(GTK_BOX(btec5), lc4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), tc4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    //g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Connexion");
+//    gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void mod_mtp (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *btec5;
+    GtkWidget *lc1, *lc3, *lc4;
+    GtkWidget *lc2;
+    GtkWidget *tc1;
+    GtkWidget *tc2, *tc3, *tc4;
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(TRUE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    btec5 = gtk_hbox_new(TRUE, 0);
+    tc1 = gtk_entry_new();
+    //tc2 = gtk_entry_new();
+    tc3 = gtk_entry_new();
+    tc4 = gtk_entry_new();
+    lc1 = gtk_label_new("Entrer votre mot de passe actuel");
+    //lc2 = gtk_label_new("debut du conge");
+    lc3 = gtk_label_new("Entrer le nouveau mot de passe");
+    lc4 = gtk_label_new("Confirmer le nouveau mot de passe");
+    bt = gtk_button_new_with_label("Retour");
+    vc = gtk_button_new_with_label("Valider");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec5, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+
+
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec4), lc3, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec4), tc3, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), lc4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec5), tc4, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    //g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+
+
+    gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Info_");
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void f_em (GtkWidget *widget, gpointer info)
+{
+
+    gchar *LOG="amad",*PASS="said";
+
+    gchar *login = gtk_entry_get_text(tc1);
+    gchar *passe = gtk_entry_get_text(tc2);
+    printf("%s\t %s", login, passe);
+
+    if(strcmp(login,LOG)==0 && strcmp(passe,PASS)==0)
+        {
+        GtkWidget *fad = NULL;
+        GtkWidget *bte_a, *bte_a1, *bte_a2;
+        GtkWidget *bt_a1, *la;
+        GtkWidget *bt_a2;
+        GtkWidget *bt_a3;
+        GtkWidget *bt_a4;
+        GtkWidget *bt_a5, *bt;
+
+        fad = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+        bte_a = gtk_vbox_new(TRUE, 0);
+        //bte_a1 = gtk_hbox_new(FALSE, 0);
+        bte_a2 = gtk_vbox_new(TRUE, 0);
+        la = gtk_label_new("VOUS-VOUS CONNECTEZ EN TANT QUE EMPLOYE\n \t\t\tQUE VOULEZ-VOUS FAIRE");
+        bt_a1 = gtk_button_new_with_label("CONSULTER MON PROFIL");
+        bt_a2 = gtk_button_new_with_label("VOIR MES HORAIRES DE TRAVAIL");
+        bt_a3 = gtk_button_new_with_label("CONSULTER MON BULLETIN DE SALAIRE");
+        bt_a4 = gtk_button_new_with_label("DEMANDE UN CONGE");
+        bt_a5 = gtk_button_new_with_label("MODIFIER MON MOT DE PASSE");
+        bt = gtk_button_new_with_label("Retour");
+
+
+        gtk_container_add(GTK_CONTAINER(fad), bte_a);
+        //gtk_box_pack_start(GTK_BOX(bte_a), bte_a1, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a), bte_a2, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), la, TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a1, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a2, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a3, TRUE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a4, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a4), "clicked", G_CALLBACK(f_conge), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt_a5, TRUE, FALSE, 0);
+        g_signal_connect(G_OBJECT(bt_a5), "clicked", G_CALLBACK(mod_mtp), (gpointer)fad);
+        gtk_box_pack_start(GTK_BOX(bte_a2), bt, TRUE, FALSE, 0);
+
+
+
+        gtk_window_set_title(GTK_WINDOW(fad), "Items");
+
+        gtk_window_set_default_size(GTK_WINDOW(fad), 310, 300);
+        gtk_window_set_position(GTK_WINDOW(fad), GTK_WIN_POS_CENTER);
+
+        gtk_widget_show_all(fad);
+        gtk_main();
+
+        }else
+        {
+            GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *img;
+    GtkWidget *lc1;
+    GtkWidget *lc2;
+
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("!!! Matricule ou Mot de passe incorrecte !!!");
+    btec = gtk_vbox_new(FALSE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    img = gtk_image_new_from_file("Images/im14.jpg");
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Identifiant");
+    lc2 = gtk_label_new("Mot_De_Passe");
+    vc = gtk_button_new_with_label("Valider");
+    bt = gtk_button_new_with_label("Retour");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE,FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 5);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, FALSE, 0);
+    gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(bt), "clicked", G_CALLBACK(delete_event), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec4), img, TRUE, FALSE, 0);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Connexion");
+     //position et dimension
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+        }
+
+}
+
+
+void connect_ad (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *img;
+    GtkWidget *lc1;
+    GtkWidget *lc2;
+
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(FALSE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    img = gtk_image_new_from_file("Images/im14.jpg");
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Identifiant");
+    lc2 = gtk_label_new("Mot_De_Passe");
+    vc = gtk_button_new_with_label("Valider");
+    bt = gtk_button_new_with_label("Retour");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE,FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 5);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, FALSE, 0);
+    gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(bt), "clicked", G_CALLBACK(delete_event), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_ad), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec4), img, TRUE, FALSE, 0);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Connexion");
+     //position et dimension
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}
+
+
+
+void connect_em (GtkWidget *widget, gpointer info)
+{
+    GtkWidget *fc = NULL;
+    GtkWidget *btec;
+    GtkWidget *btec1;
+    GtkWidget *btec2;
+    GtkWidget *btec3, *btec4, *img;
+    GtkWidget *lc1;
+    GtkWidget *lc2;
+
+    GtkWidget *vc, *bt;
+    GtkWidget *lac;
+    GtkWidget *btec0;
+
+
+//    gtk_init (&argc, &argv);
+
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    btec0 = gtk_hbox_new(TRUE, 0);
+    lac = gtk_label_new("Veuillez Saisir Les Informations Suivantes");
+    btec = gtk_vbox_new(FALSE, 0);
+    btec1 = gtk_hbox_new(TRUE, 0);
+    btec2 = gtk_hbox_new(TRUE, 0);
+    btec3 = gtk_hbox_new(TRUE, 0);
+    btec4 = gtk_hbox_new(TRUE, 0);
+    img = gtk_image_new_from_file("Images/im14.jpg");
+    tc1 = gtk_entry_new();
+    tc2 = gtk_entry_new();
+    lc1 = gtk_label_new("Matricule");
+    lc2 = gtk_label_new("Mot_De_Passe");
+    vc = gtk_button_new_with_label("Valider");
+    bt = gtk_button_new_with_label("Retour");
+
+
+    gtk_container_add(GTK_CONTAINER(fc), btec);
+    gtk_box_pack_start(GTK_BOX(btec), btec0, TRUE,FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec1, TRUE, FALSE, 5);
+   gtk_box_pack_start(GTK_BOX(btec), btec2, TRUE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(btec), btec3, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec), btec4, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec0), lac, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), lc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec1), tc1, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), lc2, TRUE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(btec2), tc2, TRUE, FALSE, 0);
+    gtk_entry_set_visibility(GTK_ENTRY(tc2), FALSE);
+    gtk_box_pack_start(GTK_BOX(btec3), bt, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(bt), "clicked", G_CALLBACK(delete_event), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec3), vc, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(vc), "clicked", G_CALLBACK(f_em), (gpointer)fc);
+    gtk_box_pack_start(GTK_BOX(btec4), img, TRUE, FALSE, 0);
+
+
+    gtk_window_set_title(GTK_WINDOW(fc), "Connexion");
+     //position et dimension
+    //gtk_window_set_default_size(GTK_WINDOW(fc), 310, 300);
+    gtk_window_set_position(GTK_WINDOW(fc), GTK_WIN_POS_CENTER);
+
+
+  gtk_widget_show_all (fc);
+  gtk_main ();
+}

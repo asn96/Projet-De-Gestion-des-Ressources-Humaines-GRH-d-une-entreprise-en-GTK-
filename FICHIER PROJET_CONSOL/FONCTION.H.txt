@@ -1,0 +1,31 @@
+#ifndef FONTIONS_H_INCLUDED
+#define FONTIONS_H_INCLUDED
+  int recherche(char ch1[15]);
+  int recherche1(char ch1[15]);
+  int recherche2(char ch1[15]);
+  void supprimer();
+   void supprimer2(char ch[15]);
+  void supprimer1(char ch[15]);
+  void ajouter();
+  void afficher();
+   void afficher1();
+   void ambauche();
+   void demande();
+   void recru(int d);
+   int reponse(char ch[15]);
+   void depart( char ch1[15],char ch2[20],char ch3[25],char ch4[20],char ch5[25]);
+   void censure(char ch[15]);
+   void modep(char ch[15]);
+   void modep1();
+   void departe();
+   void conge();
+   void wordpass(char ch2[15]);
+  void connecterchef();
+ void connecteremp(char log[15],char mot[20]);
+  void modifier();
+   void modifier1(char ch[15]);
+  void horaire1( char ch1[15],char ch2[20],char ch3[25],char ch4[20],char ch5[25]);
+  void voir(char ch[15]);
+  void horaire();
+  void majours();
+#endif // FONTIONS_H_INCLUDED

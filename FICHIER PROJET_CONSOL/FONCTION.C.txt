@@ -1,0 +1,1049 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct employe{
+    char Matricule[15];
+    char NOM[20];
+    char PRENOM[25];
+    char PASSE[20];
+    char DIPLOME[20];
+    char departement[20];
+    char horaire[20];
+    char DN[25];
+    }employe;
+    employe emp;
+     //*************RECHERCHE employe*************
+    int recherche(char ch1[15]){
+   int a=0;
+    char ch[15];
+
+    FILE*f1;
+   f1=fopen("employe.txt","r");
+   if(f1!=NULL){
+    do{
+        fgets(ch,15,f1);
+        fflush(stdin);
+        char*recherch=strstr(ch,ch1);
+        if(recherch!=NULL){
+            a=1;break;
+             fclose(f1);
+        }
+    }while(!feof(f1));}
+    else{
+        printf("VOUS N'AVEZ AUCUN EMPLOYE POUR L'INSTANT \n");
+    }
+    fclose(f1);
+    return a;}
+       //*************RECHERCHE employe dans le fichier des demande de conge*************
+    int recherche2(char ch1[15]){
+   int a=0;
+    char ch[15];
+
+    FILE*f1;
+   f1=fopen("conge.txt","r");
+   if(f1!=NULL){
+    do{
+        fgets(ch,15,f1);
+        fflush(stdin);
+        char*recherch=strstr(ch,ch1);
+        if(recherch!=NULL){
+            a=1;break;
+             fclose(f1);
+        }
+    }while(!feof(f1));}
+    else{
+        printf("LA LISTE DES DEMANDES DE CONGE EST INDISPONIBLE");
+    }
+    fclose(f1);
+    return a;}
+//**************************recherche d'un employe dans la liste suivant les departement******************
+int check(char ch[15]){
+
+ int a=0;
+    char ch1[15],ch2[15],ch3[15];
+
+    FILE*f1,*f2,*f3;
+   f1=fopen("dep1.txt","r");
+   f2=fopen("dep2.txt","r");
+   f3=fopen("dep3.txt","r");
+    if(f1!=NULL){
+    do{
+        fgets(ch,15,f1);
+        fflush(stdin);
+         char*recherch=strstr(ch,ch1);
+        if(recherch!=NULL){
+            a=1;break;
+             fclose(f1);
+        }
+    }while(!feof(f1));}
+    fclose(f1);
+    if(f2!=NULL){
+    do{
+        fgets(ch2,15,f2);
+        fflush(stdin);
+         char*recherch1=strstr(ch2,ch1);
+        if(recherch1!=NULL){
+            a=2;break;
+             fclose(f2);
+        }
+    }while(!feof(f2));}
+    fclose(f2);
+    if(f3!=NULL){
+    do{
+        fgets(ch3,15,f3);
+        fflush(stdin);
+         char*recherch2=strstr(ch3,ch1);
+        if(recherch2!=NULL){
+            a=3;break;
+             fclose(f3);
+        }
+    }while(!feof(f3));}
+    fclose(f3);
+    return a;}
+
+    //**************recherche d'un employe dans l'une des horaires****************
+    int recherche1(char ch1[15]){
+   int a=0;
+    char ch[15],ch2[15],ch3[15];
+
+    FILE*f1,*f2,*f3;
+   f1=fopen("jour.txt","r");
+   f2=fopen("soir.txt","r");
+   f3=fopen("nuit.txt","r");
+    if(f1!=NULL){
+    do{
+        fgets(ch,15,f1);
+        fflush(stdin);
+         char*recherch=strstr(ch,ch1);
+        if(recherch!=NULL){
+            a=1;break;
+             fclose(f1);
+        }
+    }while(!feof(f1));}
+    fclose(f1);
+    if(f2!=NULL){
+    do{
+        fgets(ch2,15,f2);
+        fflush(stdin);
+         char*recherch1=strstr(ch2,ch1);
+        if(recherch1!=NULL){
+            a=2;break;
+             fclose(f2);
+        }
+    }while(!feof(f2));}
+    fclose(f2);
+    if(f3!=NULL){
+    do{
+        fgets(ch3,15,f3);
+        fflush(stdin);
+         char*recherch2=strstr(ch3,ch1);
+        if(recherch2!=NULL){
+            a=3;break;
+             fclose(f3);
+        }
+    }while(!feof(f3));}
+    fclose(f3);
+    return a;}
+    //**************modification  de la liste par deparetement***********
+    void modep(char ch[15]){
+       FILE*f,*f1;
+        int n;
+        printf("DANS QUEL DEPARTEMENT  VOUS VOULEZ L'AJOUTER DE NOUVEAU \n 1-DEPARTEMENT 1 \n 2-DEPARTEMENT 2 \n 3-DEPARTEMENT 3 \n");
+        scanf("%d",&n);
+        switch(n){
+       case 1: f=fopen("dep1.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;
+        case 2:  f=fopen("dep2.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;
+        case 3:  f=fopen("dep3.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;  default:printf("CHOIX INDISPONIBLE \n");
+        }
+    }
+    //*********************modifier les departement**************
+    void modep1(){
+        char ch[15], rep;
+        FILE*f1,*f2;
+        int a;
+    printf("ENTREZ LE MATRICULE DE L'EMPLOYE \n");
+    scanf("%s",&ch);
+    recherche1(ch);
+    a=recherche1(ch);
+    switch(a){
+    case 1:
+        printf("\nVOULEZ VOUS VRAIMENT MODIFIER LE DEPARTEMENT DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("dep1.txt","r");
+   f2=fopen("temp.txt","a");
+   if(f1!=NULL){
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+        fflush(stdin);
+         }
+    }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("dep1.txt");
+   rename("temp.txt","dep1.txt");}else{fclose(f1);
+   fclose(f2);
+  }
+
+     }break;
+
+    case 2:printf("\nVOULEZ VOUS VRAIMENT MODIFIER LE DEPARTEMENT DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("dep2.txt","r");
+   f2=fopen("temp.txt","a");
+   if(f1!=NULL){
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }fflush(stdin);
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("dep2.txt");
+   rename("temp.txt","dep2.txt");}
+   else{
+        fclose(f1);
+   fclose(f2);
+
+   }
+   }break;
+
+    case 3:printf("\nVOULEZ VOUS VRAIMENT MODIFIER LE DEPARTEMENT DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("dep3.txt","r");
+   f2=fopen("temp.txt","a");
+   if(f1!=NULL){
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }fflush(stdin);
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("dep3.txt");
+   rename("temp.txt","dep3.txt");}else{fclose(f1);
+   fclose(f2);
+   }
+   }break;
+
+    default:printf("LE MATRICULE SAISIE NE FIGURE SUR AUCUNE DEPARTEMENT \n");
+    }
+modep1(ch);
+
+    }
+    //*********************ajout dans une horaire*********************
+    void modifier1(char ch[15]){
+        employe emp;
+        FILE*f,*f1;
+        int n;
+        printf("DANS QUEL HORAIRE VOUS VOULEZ L'AJOUTER DE NOUVEAU \n 1-JOUR \n 2-SOIR \n 3-NUIT \n");
+        scanf("%d",&n);
+        switch(n){
+       case 1: f=fopen("jour.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;
+        case 2:  f=fopen("soir.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;
+        case 3:  f=fopen("nuit.txt","a");
+               f1=fopen("employe.txt","r");
+               do{
+                fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+                if(strcmp(ch,emp.Matricule)==0){
+                 fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+               fflush(stdin);
+               printf("ENREGISTREMENT REUSSIE\n");
+                }
+               }while(!feof(f1));        fclose(f1);
+               fclose(f);
+               break;  default:printf("CHOIX INDISPONIBLE \n");
+        }
+
+    }
+    //************************modifier l'horaire ****************
+    void modifier(){
+        char ch[15], rep;
+        FILE*f1,*f2;
+        int a;
+    printf("ENTREZ LE MATRICULE DE L'EMPLOYE \n");
+    scanf("%s",&ch);
+    recherche1(ch);
+    a=recherche1(ch);
+    switch(a){
+    case 1:
+        printf("\nVOULEZ VOUS VRAIMENT MODIFIER L'HORAIRE DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("jour.txt","r");
+   f2=fopen("temp.txt","a");
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+        fflush(stdin);
+         }
+    }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("jour.txt");
+   rename("temp.txt","jour.txt");
+     }break;
+
+    case 2:printf("\nVOULEZ VOUS VRAIMENT MODIFIER L'HORAIRE DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("soir.txt","r");
+   f2=fopen("temp.txt","a");
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }fflush(stdin);
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("soir.txt");
+   rename("temp.txt","soir.txt");}break;
+
+    case 3:printf("\nVOULEZ VOUS VRAIMENT MODIFIER L'HORAIRE DE CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+
+   f1=fopen("nuit.txt","r");
+   f2=fopen("temp.txt","a");
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }fflush(stdin);
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("nuit.txt");
+   rename("temp.txt","nuit.txt");}break;
+
+    default:printf("LE MATRICULE SAISIE NE FIGURE SUR AUCUNE HORAIRE \n");
+    }
+modifier1(ch);
+    }
+    //*******************************FONCTION SUR L'EMPLOYE**********************************
+    void conge(char ch[15]){
+    FILE *f;
+    printf("ENTREZ LE MOTIF DE VOTRE CONGE \n");
+    scanf("%s",&emp.NOM);
+    printf("ECRIVEZ LA DATE DU DEBUT CONGE\n");
+    scanf("%s",&emp.PRENOM);
+    printf("ENTREZ LE NOMBRE DE JOUR \n");
+    scanf("%s",&emp.PASSE);
+    f=fopen("conge.txt","a");
+    fprintf(f," %s \t\t %s \t\t %s \t\t %s \n",ch,emp.NOM,emp.PRENOM,emp.PASSE);
+    printf("LA DEMANDE EST ENVOYE AVEC SUCCCES \n");
+    fclose(f);
+}
+  //******************mise a jours du fiche de conges***************
+ void majours(){
+   FILE*f1,*f2;
+   int n;
+   char ch[15];
+   printf("ENTREZ LE MATRICULE DE L'EMPLOYE \n");
+        scanf("%s",&ch);
+   n=reponse(ch);
+   if(n==1){
+   f1=fopen("conge.txt","r");
+   f2=fopen("mod.txt","a");
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE);
+         }
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("conge.txt");
+   rename("mod.txt","conge.txt");
+      }
+
+ }
+
+ //**********************modifier mon mot de passe****************
+ void wordpass(char ch2[15]){
+   FILE*f,*f1;
+   char ch[20],ch1[20];
+   printf("ENTREZ VOTRE ANCIEN MOT PASSE \n");
+   scanf("%s",&ch);
+   if(strcmp(ch,ch2)==0){
+   printf("ENTREZ VOTRE NOUVEAU MOT DE PASSE \n");
+   scanf("%s",ch1);
+   f=fopen("employe.txt","r");
+   f1=fopen("motdepass.txt","a");
+   do{
+    fscanf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    fflush(stdin);
+    if(strcmp(ch,emp.PASSE)==0){
+        fprintf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,ch1,emp.DN);
+    }else{
+    fprintf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+    }
+   }while(!feof(f));
+   fclose(f);
+   fclose(f1);
+   remove("employe.txt");
+   rename("motdepass.txt","employe.txt");
+   printf("MOT DE PASSE MODIFIE AVEC SUCCEE \n");}
+   else{
+    printf("MOT DE PASSE SAISI INCORRECT \n");
+   }
+
+ }
+ //********************CONNECTER EMPLOYE******************
+
+ void connecteremp(char log[15],char mot[20]){
+         FILE *f;
+
+         int n,i,j,a=0;
+         employe emp;
+    f=fopen("employe.txt","r");
+    if(f!=NULL){
+    do{
+     fscanf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    fflush(stdin);
+    if(strcmp(emp.Matricule,log)==0 && strcmp(emp.PASSE,mot)==0){
+            fclose(f);
+         printf("BIENVENUE  %s %s SUR NOTRE LOGICIEL POUR LA GESTION DES RESSOURCES HUMAINES DE NOTRE ENTREPRISE \n",emp.PRENOM,emp.NOM);
+          do{
+          printf(" 1-VOIR MON HORAIRE \n 2-MODIFIER MON MOT DE PASSE \n 3-CONSULTER MA FICHE DE CONGE \n 4-DEMANDER UN CONGE \n");
+          scanf("%d",&n);
+          switch(n){
+          case 1:do{
+              horaire();
+              printf("ENTREZ 1 SI VOUS VOULEZ FAIRE RETOUR OU 0 SINON \n");
+              scanf("%d",&j);
+              }while(j==1);
+              break;
+          case 2:wordpass(emp.PASSE);break;
+          case 3: voir(emp.Matricule);break;
+          case 4:conge(emp.Matricule);break;
+          default:printf("CHOIX INDISPONIBLE \n");
+          }printf("ENTREZ 1 SI VOUS VOULEZ RETOURNER SUR VOTRE MENU PRINCIPAL OU 0 SINON \n");
+          scanf("%d",&i);
+          }while(i==1);
+    a=1;break;
+    }
+    }while(!feof(f));
+      if(a==0){
+        printf("LES DONNEES QUE VOUS AVEZ ENTREES SONT INCORRECTES \n");
+      }
+    }
+    else{
+        printf("IL N'YA PAS ENCORE D'EMPLOYE DANS CETTE ENTREPRISE \n");
+    }}
+//    *****************SUPPRIMER***************************
+  void supprimer(){
+   FILE*f1,*f2;
+   char ch[15];
+   char rep;
+   printf("ENTREZ LE MATRICULE DE L'EMPLOYE QUE VOUS VOULEZ SUPPRIMER \n");
+   scanf("%s",&ch);
+   if(recherche(ch)==1){
+        printf("\nVOULEZ VOUS VRAIMENT SUPPRIMER CET EMPLOYE o/n \n");
+        scanf("%c",&rep);
+        if(rep=='O'||rep=='o'){
+        supprimer1(ch);
+        censure(ch);
+   f1=fopen("employe.txt","r");
+   f2=fopen("temp.txt","a");
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+        fprintf(f2," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("employe.txt");
+   rename("temp.txt","employe.txt");
+     printf("SUPPRESSION EFFECTUE AVEC SUCCEES \n");
+   }
+    else{
+        printf("LE MATRICULE QUE VOUS AVEZ SAISI N'EXISTE PAS \n");}
+    }
+   }
+   //*****************************supprimer dans la liste des departement********************
+   void censure(char ch[15]){
+   FILE*f1,*f2,*f3,*f4,*f5,*f6;
+    f1=fopen("dep1.txt","r");
+   f2=fopen("temp1.txt","a");
+     if(f1!=NULL){
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f2," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("dep1.txt");
+   rename("temp1.txt","dep1.txt");}
+   fclose(f1);
+   fclose(f2);
+   f3=fopen("dep2.txt","r");
+   f4=fopen("temp2.txt","a");
+     if(f3!=NULL){
+     do{
+    fscanf(f3," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f4," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f3));
+   fclose(f4);
+   fclose(f3);
+   remove("dep2.txt");
+   rename("temp2.txt","dep2.txt");}
+   fclose(f3);
+   fclose(f4);
+   f5=fopen("dep3.txt","r");
+   f6=fopen("temp3.txt","a");
+     if(f5!=NULL){
+     do{
+    fscanf(f5," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f6," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f5));
+   fclose(f5);
+   fclose(f6);
+   remove("dep3.txt");
+   rename("temp3.txt","dep3.txt");}
+   fclose(f5);
+   fclose(f6);
+
+   }
+   //    *****************SUPPRIMER dans la liste des horaires  ***************************
+  void supprimer1(char ch[15]){
+   FILE*f1,*f2,*f3,*f4,*f5,*f6;
+    f1=fopen("jour.txt","r");
+   f2=fopen("temp1.txt","a");
+     if(f1!=NULL){
+     do{
+    fscanf(f1," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f2," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f1));
+   fclose(f1);
+   fclose(f2);
+   remove("jour.txt");
+   rename("temp1.txt","jour.txt");}
+   fclose(f1);
+   fclose(f2);
+   f3=fopen("soir.txt","r");
+   f4=fopen("temp2.txt","a");
+     if(f3!=NULL){
+     do{
+    fscanf(f3," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f4," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f3));
+   fclose(f4);
+   fclose(f3);
+   remove("soir.txt");
+   rename("temp2.txt","soir.txt");}
+   fclose(f3);
+   fclose(f4);
+   f5=fopen("nuit.txt","r");
+   f6=fopen("temp3.txt","a");
+     if(f5!=NULL){
+     do{
+    fscanf(f5," %s \t\t %s \t\t %s \t\t %s ",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+    if(strcmp(ch,emp.Matricule)!=0){
+         fprintf(f6," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+         }
+   }while(!feof(f5));
+   fclose(f5);
+   fclose(f6);
+   remove("nuit.txt");
+   rename("temp3.txt","nuit.txt");}
+   fclose(f5);
+   fclose(f6);
+   }
+//****************************departement*********************
+void depart( char ch1[15],char ch2[20],char ch3[25],char ch4[20],char ch5[25]){
+int n;
+FILE*f;
+   printf("DANS QUEL DEPARETEMENT ? \n");
+   printf(" 1-DEPARTEMENT 1 \n 2-DEPARTEMENT 2 \n 3-DEPARTEMENT 3 \n");
+   scanf("%d",&n);
+   switch(n){
+   case 1:f=fopen("dep1.txt","a");
+          fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+           fflush(stdin);
+           fclose(f);break;
+   case 2: f=fopen("dep2.txt","a");
+          fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+           fflush(stdin);
+           fclose(f);break;
+   case 3:f=fopen("dep3.txt","a");
+          fprintf(f," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+           fflush(stdin);
+           fclose(f);break;
+   default:printf("CHOIX INDISPONIOBLE \n");
+   }
+}
+
+   //***************************modifié l'horaire**************
+   void horaire1( char ch1[15],char ch2[20],char ch3[25],char ch4[20],char ch5[25]){
+   FILE*f1,*f2;
+   int i;
+   employe emp;
+   printf("VOUS VOULEZ INTEGRER CE EMPLOYE DANS QUEL HORAIRE ? .");
+    printf(" \n 1-JOUR \n 2-SOIR \n 3-NUIT \n FAITES VOTRE CHOIX: \n");
+    scanf("%d",&i);
+    switch(i){
+    case 1: f1=fopen("jour.txt","a");
+            f2=fopen("employe.txt","a");
+               fprintf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fflush(stdin);
+               depart(ch1,ch2,ch3,ch4,ch5);
+               printf("ENREGISTREMENT REUSSIE\n");
+                fclose(f2);
+          fclose(f1);break;
+     case 3:f1=fopen("nuit.txt","a");
+            f2=fopen("employe.txt","a");
+               fprintf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fflush(stdin);
+               depart(ch1,ch2,ch3,ch4,ch5);
+               printf("ENREGISTREMENT REUSSIE\n");
+                fclose(f2);
+          fclose(f1);break;
+            case 2:f1=fopen("soir.txt","a");
+            f2=fopen("employe.txt","a");
+               fprintf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fprintf(f2," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",ch1,ch2,ch3,ch4,ch5);
+               fflush(stdin);
+               depart(ch1,ch2,ch3,ch4,ch5);
+               printf("ENREGISTREMENT REUSSIE\n");
+                fclose(f2);
+          fclose(f1);break;
+      default:printf("CHOIX INDISPONIBLE \n");
+    }}
+//************************voir liste par departement***************
+void departe(){
+FILE*f1;
+int n;
+ printf("VOUS VOULEZ VOIR LES EMPLOYES DU DEPARTEMENT \n"
+        " 1-DEPARTEMENT 1 \n 2-DEPARTEMENT 2 \n 3-DEPARTEMENT 3 \n");
+ scanf("%d",&n);
+ switch(n){
+ case 1:f1=fopen("dep1.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE DEPARTEMENT \n");
+ };break;
+ case 2:f1=fopen("dep2.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE DEPARTEMENT \n");
+ };break;
+ case 3:f1=fopen("dep3.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE DEPARTEMENT \n");
+ }break;
+  default:printf("DEPARTEMENT  SAISI EST INEXISTANT DANS CET ENTREPRISE \n");
+ }
+
+
+}
+ //     *********************VOIR HORAIRE******************
+void horaire(){
+    FILE*f1;
+int n;
+ printf("VOUS VOULEZ VOIR LES EMPLOYES DE L'HORAIRE \n"
+        " 1-DE LA JOURNEE \n 2-DU SOIR \n 3-DE LA NUIT \n");
+ scanf("%d",&n);
+ switch(n){
+ case 1:f1=fopen("jour.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE HORAIRE \n");
+ };break;
+ case 2:f1=fopen("soir.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE HORAIRE \n");
+ };break;
+ case 3:f1=fopen("nuit.txt","r");
+     if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM   \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));   fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUN EMPLOYE POUR CE HORAIRE \n");
+ };break;
+ default:printf("HORAIRE SAISI EST INEXISTANTE DANS CET ENTREPRISE \n");
+ }
+}
+    //********ajouter******
+ void ajouter(){
+
+     int n;
+     employe emp;
+
+             printf("ENTREZ LE MATRICULE DU NOUVEAU EMPLOYE \n");
+               scanf("%s",&emp.Matricule);
+           while(recherche(emp.Matricule)==1){     printf("MATRICULE DEJA UTILISE ESSAYE DE NOUVEAU \n");
+           scanf("%s",&emp.Matricule);}
+                 printf("ENTREZ SON NOM \n");
+               fflush(stdin);
+               gets(emp.NOM);
+               printf("ENTREZ SON PRENOM \n");
+               fflush(stdin);
+               gets(emp.PRENOM);
+                printf("ENTREZ SON MOT DE PASSE \n");
+               fflush(stdin);
+               gets(emp.PASSE);
+               printf("ENTREZ SON DATE DE NAISSANCE \n");
+               fflush(stdin);
+               gets(emp.DN);
+                   horaire1(emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+ }
+
+//    *****************AFFICHER******************************
+    void afficher(){
+ FILE*f1;
+
+ f1=fopen("employe.txt","r");
+ if(f1!=NULL){
+ printf("  MATRICULE \t\t NOM \t\t PRENOM  \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM);}while(!feof(f1));}
+ else{
+    printf("VOUS N'AVEZ PAS D'EMPLOYE DANS VOTRE ENTREPRISE");
+ }fclose(f1);}
+ //*****************REPONSE DES DEMANDES DE CONGES*******************************
+int reponse(char ch[15]){
+    FILE*f,*f1;
+    char rep,ch3[20];
+    int n,i=0;
+    f1=("conge","r");
+    if(f1!=NULL){
+        recherche2(ch);
+    if(recherche2(ch)==1){
+    printf("ETES VOUS D'ACCORD POUR LA PERMISSION O OU N \n");
+    scanf("%c",&rep);
+    if(rep=='o' || rep=='O'){
+        printf("ENTREZ LE NOMBRE DE JOUR ACCORDE \n");
+        scanf("%d",&n);
+        printf("ENTREZ LA DATE DU DEBUT DE CONGE \n");
+        scanf("%s",&ch3);
+        f=fopen("reponse.txt","a");
+        fprintf(f," %s \t\t PERMISSION \t\t %d \t\t %s \n",ch,n,ch3);
+        fclose(f);
+    }
+    else{
+        f=fopen("reponsen.txt","a");
+          fprintf(f," %s \t\t PERMISSION \t\t  NON \t\t  ACCORDEE \n",ch);
+        fclose(f);
+    }
+    printf("REPONSE TRANSMISE AVEC SUCCEES \n");i=1;
+    }
+    else {
+            printf("L'EMPLOYE QUI POSSEDE CE MATRICULE N'A PAS FAIRE  UNE DEMANDE");
+    }}
+    else{
+        printf("LA LISTE DES DEMANDES DE CONGE EST INDISPONIBLE \n");
+    }
+    return i;
+    }
+//********************************afficher les reponses des demande de conges****************
+void voir(char ch[15]){
+FILE*f;
+f=fopen("reponse.txt","r");
+if(f!=NULL){
+    printf(" MATRICULE \t\t PERMISSION \t\t JOURS \t\t DEBUT \n");
+    do{fscanf(f,"%s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE);
+        //fgets(ch,30,f);
+        fflush(stdin);
+  if(strcmp(ch,emp.Matricule)==0){
+printf(" %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE);}
+// puts(ch);
+ }while(!feof(f));
+ fclose(f);}else{
+ printf("LES REPONSES POUR LES DEMANDES DE CONGE SONT INDISPONIBLE \n");
+fclose(f);
+ }
+    }
+//******************************demande d'embauchement**********************************************************
+void ambauche(){
+    FILE*f;
+    int i=0;
+
+f=fopen("demande.txt","r");
+    if(f!=NULL){
+do{
+        fscanf(f," %d \t\t %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&i,&emp.NOM,&emp.PRENOM,&emp.PASSE,&emp.DN,&emp.Matricule);
+
+}while(!feof(f));}
+fclose(f);
+i=i+1;
+    printf("ENTREZ VOS COORDONNEES \n");
+printf("NOM:");
+scanf("%s",&emp.NOM);
+printf("\n PRENOM:");
+scanf("%s",&emp.PRENOM);
+printf("\n DIPLOME:");
+scanf("%s",&emp.DIPLOME);
+printf("\n DATE DE NAISSANCE:");
+scanf("%s",&emp.DN);
+printf("\n MOT DE PASSE:");
+scanf("%s",&emp.PASSE);
+f=fopen("demande.txt","a");
+fprintf(f," %d \t\t %s \t\t %s \t\t %s \t\t %s \t\t %s \n",i,emp.NOM,emp.PRENOM,emp.DIPLOME,emp.DN,emp.PASSE);
+fclose(f);
+
+}
+//*************************liste demande d'emploi********************************************µ
+void demande(){
+FILE*f;
+int i;
+f=fopen("demande.txt","r");
+printf(" ID \t\t NOM \t\t PRENOM \t\t DIPLOME \t\t DATE DE NAISSANCE \n");
+if(f!=NULL){
+    do{
+        fscanf(f," %d \t\t %s \t\t %s \t\t %s \t\t %s \t\t %s \n",&i,&emp.NOM,&emp.PRENOM,&emp.DIPLOME,&emp.DN,&emp.PASSE);
+        printf(" %d \t\t %s \t\t %s \t\t %s \t\t %s \n",i,emp.NOM,emp.PRENOM,emp.DIPLOME,emp.DN);
+    }while(!feof(f));
+}else{
+printf("VOUS N'AVEZ PAS DE DEMANDEUR DANS LA LISTE \n");}
+fclose(f);
+}
+//**************************recru accepte**********************
+void recru(int d){
+FILE*f1,*f2,*f3,*f4;
+int i,n=1,j;
+f1=fopen("demande.txt","r");
+f2=fopen("temp.txt","a");
+do{
+    fscanf(f1," %d \t\t %s \t\t %s \t\t %s \t\t %s \t\t %s\n",&i,&emp.NOM,&emp.PRENOM,&emp.DIPLOME,&emp.DN,&emp.PASSE);
+    if(i!=d){
+        fprintf(f2," %d \t\t %s \t\t %s \t\t %s \t\t %s \t\t %s \n",n,emp.NOM,emp.PRENOM,emp.DIPLOME,emp.DN,emp.PASSE);
+        n=n+1;
+    }else{
+    f3=fopen("liste.txt","a");
+    printf("ENTREZ SON MATRICULE \n");
+    scanf("%s",&emp.Matricule);
+    horaire1(emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE,emp.DN);
+    fprintf(f3," %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.DN);
+    j=0;
+    fclose(f3);
+    }
+}while(!feof(f1));
+fclose(f1);
+fclose(f2);
+remove("demande.txt");
+rename("temp.txt","demande.txt");
+if(j==0){
+    printf("REPONSE EMISE AVEC SUCCEES \n");
+}else{
+printf("L'IDENTIFIANT SAISI N'EST PAS DANS LA LISTE \n");
+}
+
+}
+//*********************************VOIR LA LISTE DES RECRUES***************************
+void liste(){
+FILE*f;
+f=fopen("liste.txt","r");
+if(f!=NULL){
+        printf("TOUTE NOUVEAU RECRU DOIT CONSULTER SON COMPTE POUR SAVOIR SON HORAIRE ET SON DEPARTEMENT \n");
+        printf(" MATRICULE \t\t NOM \t\t PRENOM \t\t DATE DE NAISSANCE \n");
+    do{
+         fscanf(f," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.DN);
+        printf(" %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.DN);
+    }while(!feof(f));
+}else{
+printf("LA LISTE EST INDISPONIBLE \n");}
+fclose(f);
+}
+//************************VOIR LISTE DES DEMANDES DE CONGE*****************************
+   void afficher1(){
+ FILE*f1;
+
+ f1=fopen("conge.txt","r");
+ if(f1!=NULL){
+ printf("  MATRICULE \t\t MOTIF \t\t DEBUT  \t\t NOMBRE DE JOUR \n");
+
+ do{fscanf(f1," %s \t\t %s \t\t %s \t\t %s \n",&emp.Matricule,&emp.NOM,&emp.PRENOM,&emp.PASSE);
+ fflush(stdin);
+ printf(" %s \t\t %s \t\t %s \t\t %s \n",emp.Matricule,emp.NOM,emp.PRENOM,emp.PASSE);}while(!feof(f1));
+ fclose(f1);}
+ else{
+    printf("VOUS N'AVEZ AUCUNE DEMANDE DE CONGE \n");
+ }fclose(f1);}
+
+
+//*******************************CONNECTION DE L'ADMINISTRATEUR***************************
+void connecterchef(){
+     int n,k,i,l,j=0;
+     char ch[15];
+  printf("BIENVENUE MR L'ADMINISTRATEUR DE LA GRH FAITES VOTRE CHOIX\n");
+  printf(" 1-VOIR LA LISTE DES EMPLOYES \n 2-MODIFIER LES INFORMATIONS D'UN EMPLOYE \n 3-SUPPRIMER UN EMPLOYE \n 4-AJOUTER UN EMPLOYE \n 5-GESTION DE CONGE\n 6-RECRUTEMENT \n");
+ scanf("%d",&n);
+ switch(n){
+ case 1:printf("VOUS VOULEZ VOIR \n 1-LA LISTE GLOBALE \n 2-LA LISTE SUIVANT LES HORAIRES \n 3-LA LISTE SUIVANT LE DEPARTEMENT \n");
+        scanf("%d",&i);
+        if(i==1){
+     afficher();}
+     else {
+            if(i==2){
+                horaire();
+            }else{
+            if(i==3){ departe();}
+            }}
+            break;
+ case 2:printf("1-MODIFIER SON HORAIRE \n 2-MODIFIER SON DEPARTEMENT \n");
+        scanf("%d",&i);
+        if(i==1){
+            modifier();
+        }else{
+        if(i==2){
+            modep1();}
+        }
+            break;
+ case 4:
+                     printf("ENTREZ LE NOMBRE DE PERSONNE QUE VOUS VOULEZ AJOUTER\n");
+                scanf("%d",&i);
+  for(j==0;j<i;j++){
+                     ajouter();}
+                     break;
+ case 3:
+                     printf("ENTREZ LE NOMBRE D'EMPLOYE QUE VOUS VOULEZ SUPPRIMER\n");
+                scanf("%d",&i);
+  for(j==0;j<i;j++){
+                     supprimer();}
+                    break;
+case 5:do{
+    printf(" 1-VOIR LISTE DES DEMANDES DE CONGE \n 2-REPONDRE AU DEMANDE \n");
+scanf("%d",&k);
+if(k==1){
+    afficher1();
+}else{
+if(k==2){
+
+                     printf("ENTREZ LE NOMBRE D'EMPLOYE QUE VOUS VOULEZ REPONDRE\n");
+                scanf("%d",&i);
+  for(j==0;j<i;j++){
+     majours();
+  }
+}
+
+}printf("ENTREZ 1 SI VOUS VOULEZ FAIRE RETOUR OU 0 POUR CONTINUER SUR LE MENU PRINCIPAL \n");
+scanf("%d",&l);
+}while(l==1);
+break;
+case 6:printf(" 1-VOIRE LA LISTE DES DEMANDES DE RECRUTEMENT \n");
+       scanf("%d",&i);
+       if(i==1){
+        demande();
+        printf("ENTREZ L'IDENTIFIANT DE LA PERSONNE EMBAUCHEE OU 0 S'IL N'YA PAS\n");
+       scanf("%d",&j);
+        if(j!=0){
+        recru(j);}
+       }
+       break;
+default:printf("choix indisponible");}
+ }
+
